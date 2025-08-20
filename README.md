@@ -28,22 +28,39 @@ Each app is a separate Xcode project (no shared workspace) to keep setup simple 
 
 ## Repo Structure
 ios26-microapps-portfolio/
+
 ├─ PocketPantry/
+
 │  ├─ PocketPantry.xcodeproj
+
 │  ├─ PocketPantry/
+
 │  ├─ PocketPantryTests/
+
 │  └─ README.md
+
 ├─ StepCounterWidget/
+
 │  ├─ StepCounterWidget.xcodeproj
+
 │  └─ README.md
+
 ├─ HotColdFinder/
+
 │  ├─ HotColdFinder.xcodeproj
+
 │  └─ README.md
+
 ├─ DailyQuoteFetcher/
+
 │  ├─ DailyQuoteFetcher.xcodeproj
+
 │  └─ README.md
+
 ├─ README.md
+
 └─ .gitignore
+
 
 ---
 
