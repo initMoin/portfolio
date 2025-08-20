@@ -30,7 +30,6 @@ Each app is a separate Xcode project (no shared workspace) to keep setup simple 
 ios26-microapps-portfolio/
 
 ├─ PocketPantry/
-
 │  ├─ PocketPantry.xcodeproj
 
 │  ├─ PocketPantry/
