@@ -47,7 +47,6 @@ ios26-microapps-portfolio/
 
 ---
 
-### 🚀 Getting Started
 ```markdown
 ## Getting Started
 
@@ -70,8 +69,8 @@ ios26-microapps-portfolio/
 
 * Each app has its own test bundle. Run tests with ⌘U (Product → Test).
 * Tests cover:
-   * Pure logic (e.g., formatting, countdowns)
-   * Persistence using an in-memory SwiftData ModelContainer (fast, disk-free)
+  * Pure logic (e.g., formatting, countdowns)
+  * Persistence using an in-memory SwiftData ModelContainer (fast, disk-free)
 
 Example:
 ```swift
@@ -83,3 +82,19 @@ let ctx = ModelContext(container)
 
 ```markdown
 if you see **"No such module 'XCTest'"**, set the file's **Target Membership** to the test bundle (not the app target).
+
+```markdown
+## Tracking & Docs
+* Planning and tasks are managed in Notion (per app boards, Kanban by Status, Priority view).
+* Each app includes a README.md with:
+  * Features implemented and rationale
+  * Migration notes (if any)
+  * Demo script (60-90s)
+* Add a short demo GIF (20-30s) when each app is finished.
+
+```markdown
+## Status
+* Pocket Pantry -- v1.1 complete (CRUD, migration, tests)
+* Step Counter Widget -- next
+* Holt-Cold Finder
+* Daily Quote Fetcher 
