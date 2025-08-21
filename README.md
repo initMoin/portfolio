@@ -28,42 +28,27 @@ Each app is a separate Xcode project (no shared workspace) to keep setup simple 
 
 ## Repo Structure
 ios26-microapps-portfolio/
-
-├─ PocketPantry/
-│  ├─ PocketPantry.xcodeproj
-
-│  ├─ PocketPantry/
-
-│  ├─ PocketPantryTests/
-
-│  └─ README.md
-
-├─ StepCounterWidget/
-
-│  ├─ StepCounterWidget.xcodeproj
-
-│  └─ README.md
-
-├─ HotColdFinder/
-
-│  ├─ HotColdFinder.xcodeproj
-
-│  └─ README.md
-
-├─ DailyQuoteFetcher/
-
-│  ├─ DailyQuoteFetcher.xcodeproj
-
-│  └─ README.md
-
-├─ README.md
-
-└─ .gitignore
+   - PocketPantry/
+      - PocketPantry.xcodeproj
+      - PocketPantry/
+      - PocketPantryTests/
+      - README.md
+   - StepCounterWidget/
+      - StepCounterWidget.xcodeproj
+      - README.md
+   - HotColdFinder/
+      - HotColdFinder.xcodeproj
+      - README.md
+   - DailyQuoteFetcher/
+      - DailyQuoteFetcher.xcodeproj
+      - README.md
+   - README.md
+   - .gitignore
 
 
 ---
 
-```markdown
+
 ## Getting Started
 
 1. **Clone**
@@ -77,7 +62,6 @@ ios26-microapps-portfolio/
 
 ---
 
-```markdown
 ## Testing
 
 * Each app has its own test bundle. Run tests with ⌘U (Product → Test).
@@ -86,17 +70,14 @@ ios26-microapps-portfolio/
   * Persistence using an in-memory SwiftData ModelContainer (fast, disk-free)
 
 Example:
-```swift
 import SwiftData
 
 let config = ModelConfiguration(isStoredInMemoryOnly: true)
 let container = try ModelContainer(for: PantryItem.self, configurations: config)
 let ctx = ModelContext(container)
 
-```markdown
 if you see **"No such module 'XCTest'"**, set the file's **Target Membership** to the test bundle (not the app target).
 
-```markdown
 ## Tracking & Docs
 * Planning and tasks are managed in Notion (per app boards, Kanban by Status, Priority view).
 * Each app includes a README.md with:
@@ -105,7 +86,6 @@ if you see **"No such module 'XCTest'"**, set the file's **Target Membership** t
   * Demo script (60-90s)
 * Add a short demo GIF (20-30s) when each app is finished.
 
-```markdown
 ## Status
 * Pocket Pantry -- v1.1 complete (CRUD, migration, tests)
 * Step Counter Widget -- next
