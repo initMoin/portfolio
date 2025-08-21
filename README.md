@@ -12,17 +12,43 @@ Each app is a separate Xcode project (no shared workspace) to keep setup simple 
 
 ## Apps
 
-- [**Pocket Pantry**](PocketPantry/README.md) — SwiftData CRUD + safe auto‑migration  
-  _@Model, @Query, v1 → v1.1 optional field, “Expiring Soon” section, in‑memory SwiftData tests._
+### 1. [PocketPantry](PocketPantry/README.md)
+- **Frameworks:** SwiftData  
+- **Features:**  
+  - `@Model` pantry items with CRUD operations  
+  - `@Query` list with “expiring soon” filter  
+  - Schema evolution demo: v1 → v1.1 adds `expiryDate`  
+  - Unit tests with in-memory SwiftData container  
+- **Focus:** Persistence, queries, safe migrations  
 
-- [**Step Counter Widget**](StepCounterWidget/) — WidgetKit + (optionally) HealthKit + ActivityKit  
-  _Small/medium widget with timeline; simulator fallback for steps; optional Live Activity if time permits._
+---
 
-- [**Hot‑Cold Finder**](HotColdFinder/) — NearbyInteraction + MultipeerConnectivity  
-  _Two‑device token exchange; distance → heat mapping; minimal, responsive UI._
+### 2. [StepCounter](StepCounter/README.md)
+- **Frameworks:** HealthKit, WidgetKit, (optional) ActivityKit  
+- **Features:**  
+  - App UI shows today’s steps and progress toward goal  
+  - Widget extension (small/medium) with hourly refresh  
+  - Simulated store for previews + simulator fallback  
+  - Unit tests for `StepsService`  
+- **Focus:** HealthKit integration, interactive widgets  
 
-- [**Daily Quote Fetcher**](DailyQuoteFetcher/) — BackgroundTasks + UserNotifications  
-  _BG refresh pulls one quote per day; posts a local notification; tiny foreground UI for manual fetch._
+---
+
+### 3. HotColdFinder (Coming Soon)
+- **Frameworks:** NearbyInteraction, MultipeerConnectivity  
+- **Features:**  
+  - Seeker vs Target mode with token exchange  
+  - Real-time distance feedback (“hotter/colder”)  
+- **Focus:** Spatial computing APIs, responsive feedback  
+
+---
+
+### 4. DailyQuoteFetcher (Coming Soon)
+- **Frameworks:** BackgroundTasks, UserNotifications  
+- **Features:**  
+  - Daily BGAppRefreshTask fetches a motivational quote  
+  - Posts local notification with minimal UI  
+- **Focus:** Background execution, notification delivery  
 
 ---
 
@@ -35,19 +61,14 @@ ios26-microapps-portfolio/
       - README.md
    - StepCounterWidget/
       - StepCounterWidget.xcodeproj
+      - StepCounter/
+      - StepCounterWidget/
       - README.md
    - HotColdFinder/
-      - HotColdFinder.xcodeproj
-      - README.md
    - DailyQuoteFetcher/
-      - DailyQuoteFetcher.xcodeproj
-      - README.md
    - README.md
-   - .gitignore
-
 
 ---
-
 
 ## Getting Started
 
@@ -66,7 +87,7 @@ ios26-microapps-portfolio/
 
 * Each app has its own test bundle. Run tests with ⌘U (Product → Test).
 * Tests cover:
-  * Pure logic (e.g., formatting, countdowns)
+  * Pure logic (e.g., formatting, countdowns, step percentage mapping)
   * Persistence using an in-memory SwiftData ModelContainer (fast, disk-free)
 
 Example:
@@ -80,7 +101,11 @@ let ctx = ModelContext(container)
 if you see **"No such module 'XCTest'"**, set the file's **Target Membership** to the test bundle (not the app target).
 
 ## Tracking & Docs
-* Planning and tasks are managed in Notion (per app boards, Kanban by Status, Priority view).
+* Planning and tasks are managed in Notion database with:
+    * Kanban by Status
+    * Boards per app
+    * Priority view for actionable tasks
+    * QA queue
 * Each app includes a README.md with:
   * Features implemented and rationale
   * Migration notes (if any)
@@ -88,7 +113,7 @@ if you see **"No such module 'XCTest'"**, set the file's **Target Membership** t
 * Add a short demo GIF (20-30s) when each app is finished.
 
 ## Status
-* Pocket Pantry -- v1.1 complete (CRUD, migration, tests)
-* Step Counter Widget -- next
-* Holt-Cold Finder
-* Daily Quote Fetcher 
+* Pocket Pantry // v1.1 complete / CRUD, migration, tests
+* Step Counter Widget // MVP v1.0 complete / app, widget, tests
+* Holt-Cold Finder // pending
+* Daily Quote Fetcher // pending
