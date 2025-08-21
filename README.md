@@ -67,13 +67,10 @@ ios26-microapps-portfolio/
 ## Getting Started
 
 1. **Clone**
-   ```bash
    git clone https://github.com/<you>/ios26-microapps-portfolio.git
 2. **Open a project**
-   ``bash
    * Example: PocketPantry/PocketPantry.xcodeproj
 3. **Build & Run**
-   ``bash
    * Requires Xcode 26 (beta) and iOS SDK 18.0+
    * Select an iPhone Simulator and run
 > Each app is independent -- open only the project you want to run. No shared workspace needed.
