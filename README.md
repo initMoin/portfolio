@@ -70,13 +70,13 @@ ios26-microapps-portfolio/
   * Persistence using an in-memory SwiftData ModelContainer (fast, disk-free)
 
 Example:
-
+```
 import SwiftData
 
 let config = ModelConfiguration(isStoredInMemoryOnly: true)
 let container = try ModelContainer(for: PantryItem.self, configurations: config)
 let ctx = ModelContext(container)
-
+```
 if you see **"No such module 'XCTest'"**, set the file's **Target Membership** to the test bundle (not the app target).
 
 ## Tracking & Docs
