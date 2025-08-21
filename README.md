@@ -70,6 +70,7 @@ ios26-microapps-portfolio/
   * Persistence using an in-memory SwiftData ModelContainer (fast, disk-free)
 
 Example:
+
 import SwiftData
 
 let config = ModelConfiguration(isStoredInMemoryOnly: true)
