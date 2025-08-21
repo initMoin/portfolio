@@ -1,6 +1,7 @@
-# Pocket Pantry
+# PocketPantry
 
-A tiny SwiftUI + **SwiftData** app that demonstrates modern persistence with **MV (Model–View)**, CRUD, and a safe **auto-migration** from v1 → v1.1. The UI is deliberately small (1 list screen + add sheet) to keep focus on data modeling, queries, and testing.
+A SwiftData-powered inventory tracker demonstrating **CRUD with @Model**,  
+queries with `@Query`, and **schema evolution (migration)**.
 
 - **Xcode:** 26 beta  
 - **iOS:** 18.0+  
@@ -11,140 +12,103 @@ A tiny SwiftUI + **SwiftData** app that demonstrates modern persistence with **M
 
 ## Features (and Why)
 
-### 1) `@Model PantryItem` with CRUD
-- **What:** Minimal `PantryItem` using SwiftData `@Model` with `name`, `quantity`, `createdAt` (v1), and optional `expiryDate` (v1.1).
-- **Why:** Demonstrates modern Apple-first persistence with concise code and automatic schema handling.
+### 1) PantryItem model
+- **What:** `@Model PantryItem { name, quantity, createdAt }`.
+- **Why:** Minimal schema to demo SwiftData persistence.
 
-### 2) `@Query` list (sorted by `createdAt`)
-- **What:** Main screen (`PantryListView`) uses `@Query` to fetch items sorted newest-first.
-- **Why:** `@Query` updates the UI reactively when data changes.
+### 2) CRUD operations
+- **What:** Insert, update, delete items using `ModelContext`.
+- **Why:** Covers core persistence functionality.
 
-### 3) Add sheet with validation
-- **What:** `AddEditItemView` validates input (non-empty name, bounded quantity).
-- **Why:** Ensures clean data and user-friendly input.
+### 3) SwiftData queries
+- **What:** `@Query` to fetch and sort pantry items; filter “expiring soon”.
+- **Why:** Demonstrates modern SwiftData query system.
 
-### 4) Swipe-to-delete with `modelContext`
-- **What:** Standard list deletion with explicit save.
-- **Why:** Matches Apple patterns; avoids hidden auto-saves.
+### 4) Migration demo
+- **What:** v1.0 schema → v1.1 adds optional `expiryDate`.
+- **Why:** Shows off SwiftData auto-migration.
 
-### 5) v1.1 auto-migration (`expiryDate`)
-- **What:** Schema evolution via optional `expiryDate`.
-- **Why:** Demonstrates safe, low-risk migrations.
+### 5) In-memory unit tests
+- **What:** `SwiftDataInMemoryTests` with in-memory `ModelContainer`.
+- **Why:** Verifies CRUD logic without persisting to disk.
 
-### 6) “Expiring Soon” section + D-day badge
-- **What:** Items expiring within 7 days show in a separate section with countdown.
-- **Why:** Adds user-centric logic atop persisted data.
-
-### 7) Accessibility & typography
-- **What:** Combined labels, monospaced digits, Dynamic Type.
-- **Why:** Shows awareness of inclusivity & polish.
-
-### 8) Focused tests
-- **What:**  
-  - `FormattingTests` (date countdown logic).  
-  - `SwiftDataInMemoryTests` (CRUD in memory-only store).  
-- **Why:** Fast, reliable tests with no disk I/O.
-
-### 9) Optional debug migration helper
-- **What:** Temporary DEBUG-only button to assign expiry defaults.  
-- **Why:** Safe one-off backfill; code is removed after running.
+### 6) Accessibility & polish
+- **What:** Semantic labels and Dynamic Type support.
+- **Why:** Ensures inclusivity and baseline professional quality.
 
 ---
 
 ## Architecture
 
-- **Model–View only**: Views read with `@Query`, write with `@Environment(\.modelContext)`.  
-- **Helpers**: Small pure functions for testability.  
-- **Trade-offs**: No repository abstraction, no background sync — intentional for MVP scope.
+- **Model–View only:** Views bind to SwiftData models directly.  
+- **Services:** Minimal helpers around SwiftData container.  
+- **Trade-offs:** No networking/cloud sync in MVP.
 
----
-
-## Data Model
-
-```swift
-@Model
-final class PantryItem {
-    var name: String
-    var quantity: Int
-    var createdAt: Date
-    var expiryDate: Date? // v1.1 optional field
-}
-```
 ---
 
 ## Project Structure
-
+```
 PocketPantry/
 ├─ PocketPantryApp.swift
 ├─ Models/
 │  └─ PantryItem.swift
 ├─ Views/
-│  ├─ PantryListView.swift
-│  └─ AddEditItemView.swift
-├─ Utilities/
-│  └─ Formatting.swift
-└─ PocketPantryTests/
-   ├─ FormattingTests.swift
-   └─ SwiftDataInMemoryTests.swift
+│  └─ PantryListView.swift
+├─ Services/
+│  └─ PersistenceHelpers.swift
+├─ Tests/
+│  └─ SwiftDataInMemoryTests.swift
+└─ Assets/
+```
 
 ---
 
 ## Build & Run
 
-1. Open `PocketPantry/PocketPantry.xcodeproj` in Xcode 26 (beta).
-2. Ensure the target’s deployment is iOS **18.0** and Swift **6** (Build Settings → Swift Language Version = Latest / 6).
-3. Select an iPhone simulator and **Run**.
-4. Add a couple of items via **+**, delete via swipe; relaunch to confirm persistence.
+1. Open `PocketPantry/PocketPantry.xcodeproj` in Xcode 26 (beta).  
+2. Run on device or simulator.  
+3. Use the “Add Item” button to insert test data.  
 
 ---
 
 ## Migration Demo (v1 → v1.1)
 
-**Goal:** Demonstrate a safe SwiftData auto‑migration by adding an optional field.
-
-1) **v1** (baseline)
-   - `PantryItem` has: `name`, `quantity`, `createdAt`.
-   - Build & run; add a few items.
-   - **Do not delete the app** between v1 and v1.1.
-
-2) **v1.1** (migrated)
-   - Add `var expiryDate: Date?` to `PantryItem` and update initializers/UI.
-   - Build & run on the **same** simulator/device.
-   - Existing rows are preserved with `expiryDate = nil`.
-   - New items can set an expiry; items expiring in ≤ 7 days appear in “Expiring Soon”.
-
-> If you delete the app or reset the simulator between runs, you restart with a clean store (no visible migration), which is expected.
+- **v1.0:** PantryItem = `{ name, quantity, createdAt }`  
+- **v1.1:** Added optional `expiryDate`.  
+- Demonstrates SwiftData **auto-migration**.  
 
 ---
 
 ## Testing
 
-- **Run all tests:** select the `PocketPantryTests` scheme → **⌘U**.
+- Run all tests with **⌘U** using the `PocketPantryTests` scheme.  
+- Coverage:  
+  - Insert and fetch from in-memory store.  
+  - Sort by `createdAt`.  
+- Note:  
+  - Some environments may show `"No such module 'XCTest'"`. Tests compile and run correctly in Xcode 26 beta with a proper **Unit Testing Bundle** target.
 
-### What’s covered
-- `FormattingTests`: pure date/countdown logic (fast, no I/O).
-- `SwiftDataInMemoryTests`: CRUD using an **in‑memory** `ModelContainer`:
-  ```swift
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try ModelContainer(for: PantryItem.self, configurations: config)
-  let ctx = ModelContext(container)
-  ```
 ---
 
 ## Future Ideas (Not in MVP)
 
-- Inline editing in the list or a dedicated edit sheet
-- Search / categories with a simple `@Query` predicate
-- Local notifications for upcoming expiry
-- iCloud sync (CloudKit + SwiftData)
-- Basic analytics (e.g., items added per week)
+- iCloud sync with SwiftData + CloudKit.  
+- Tagging or categories for items.  
+- Notifications for expiring items.
 
 ---
 
 ## Demo Script (60–90s)
 
-1. Launch, tap **+**, add two items (make one expire within 7 days).
-2. Point out **Expiring Soon** and the **D‑day** badge.
-3. Swipe to delete an item; relaunch to show persistence.
-4. Briefly explain v1 → v1.1 migration (added optional `expiryDate`).
-5. Run tests (**⌘U**) to show green checks.
+1. Launch app → add a new pantry item (e.g., “Milk”).  
+2. Show list updating in real time.  
+3. Update item quantity → persists immediately.  
+4. Delete item → disappears instantly.  
+5. Explain migration demo (added `expiryDate`).  
+6. Mention SwiftData unit tests verifying CRUD.
+
+---
+
+## License
+
+MIT — lightweight demo for educational and portfolio purposes.
