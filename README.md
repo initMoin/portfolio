@@ -20,10 +20,17 @@ A collection of four small, surgical iOS apps built with **Xcode 26 (beta)**, **
 - **Focus:** Spatial computing APIs (UWB), real-time feedback, capability-aware UI.  
 - **Hardware Requirement:** Requires two UWB-capable iPhones (iPhone 11 or newer). QA blocked until a second UWB device is available.
 
-### 4. DailyQuoteFetcher (Coming Soon)
+### 4. [DailyQuoteFetcher](DailyQuoteFetcher/README.md)
 - **Frameworks:** BackgroundTasks, UserNotifications  
-- **Features:** Daily BG refresh pulls a quote and posts a notification; minimal foreground UI.  
-- **Focus:** Background execution, notification delivery.
+- **Features:**  
+  - Networking (URLSession async/await) to fetch quotes from the Quotable API.  
+  - Persistence via `UserDefaults` (last quote + timestamp).  
+  - Background refresh with `BGAppRefreshTask`.  
+  - Local notifications with quote text + author.  
+  - Deep link into the app from notification tap.  
+  - Debug tools for repeat delivery + permission QA.  
+  - Resilience fallback to cached quote if offline.  
+- **Focus:** Networking, background execution, notification delivery.
 
 ## Repo Structure
 ```
@@ -43,7 +50,11 @@ ios26-microapps-portfolio/
 │  ├─ HotColdFinder/
 │  ├─ HotColdFinderTests/
 │  └─ README.md
-├─ DailyQuoteFetcher/     # placeholder
+├─ DailyQuoteFetcher/
+│  ├─ DailyQuoteFetcher.xcodeproj
+│  ├─ DailyQuoteFetcher/
+│  ├─ DailyQuoteFetcherTests/
+│  └─ README.md
 └─ README.md              # this file
 ```
 
@@ -78,8 +89,36 @@ ios26-microapps-portfolio/
 - ✅ PocketPantry — v1.1 complete (CRUD + migration + tests)
 - ✅ StepCounter — MVP complete (app + widget + tests)
 - ✅ HotColdFinder — MVP complete (NI + MPC, HOT/WARM/COLD, tests)
-- 🚧 DailyQuoteFetcher — planned
+- ✅ DailyQuoteFetcher — v1.0 complete (Networking + BackgroundTasks + Notifications + tests)
+
+## Portfolio Changelog
+
+### [1.0.0] — 2025-08-12
+- **PocketPantry** released (SwiftData CRUD + schema migration demo).
+
+### [1.0.0] — 2025-08-21
+- **StepCounter** released (HealthKit + WidgetKit + Watch app companion).  
+- Interactive widget with Liquid Glass background.  
+- Added Watch app with live sync.
+
+### [1.0.0] — 2025-08-23
+- **HotColdFinder** released (NearbyInteraction + MultipeerConnectivity demo).  
+- Requires two UWB-capable Apple devices.
+
+### [1.0.0] — 2025-08-24
+- **DailyQuoteFetcher** released (Networking + BackgroundTasks + Notifications).  
+- Features deep link from notification + repeat delivery/permissions QA.
 
 ## License
 
-MIT — open and permissive for educational/demo use.
+MIT License
+
+Copyright (c) 2025 Moinuddin Ahmad
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
