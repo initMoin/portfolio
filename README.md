@@ -6,17 +6,32 @@ A collection of four small, surgical iOS apps built with **Xcode 26 (beta)**, **
 
 ### 1. [PocketPantry](PocketPantry/README.md)
 - **Frameworks:** SwiftData  
-- **Features:** `@Model` CRUD, `@Query` list with “expiring soon,” v1 → v1.1 migration via optional `expiryDate`, in-memory SwiftData tests.  
+- **Features:**  
+  - `@Model` CRUD for pantry items.  
+  - `@Query` list with “expiring soon” filter.  
+  - Simulated schema migration (v1 → v1.1) adding `expiryDate`.  
+  - In-memory SwiftData tests.  
 - **Focus:** Persistence, queries, safe migrations.
 
 ### 2. [StepCounter](StepCounter/README.md)
 - **Frameworks:** HealthKit, WidgetKit, (optional) ActivityKit  
-- **Features:** App UI with steps and progress; widget with hourly timeline; simulated store for previews/simulator; unit tests for `StepsService`; watchOS companion app with sync via WatchConnectivity.  
+- **Features:**  
+  - App UI showing live step count and progress.  
+  - Widget with hourly timeline refresh and progress ring.  
+  - Simulation fallback when HealthKit unavailable.  
+  - WatchOS companion app with live sync via WatchConnectivity.  
+  - Unit tests for `StepsService`.  
+  - Widget polished with Liquid Glass background.  
 - **Focus:** HealthKit integration, widgets, cross-device sync.
 
 ### 3. [HotColdFinder](HotColdFinder/README.md)
 - **Frameworks:** NearbyInteraction, MultipeerConnectivity  
-- **Features:** Seeker/Target roles; NI discovery token exchange over MPC; ranging session with live HOT/WARM/COLD mapping; polished fallback banner for unsupported devices; unit tests for `HotColdMapper` and `PeerMessage`.  
+- **Features:**  
+  - Seeker/Target roles with NI discovery token exchange via MPC.  
+  - UWB ranging session with live HOT/WARM/COLD mapping.  
+  - Real-time distance feedback UI.  
+  - Polished fallback banner for unsupported devices.  
+  - Unit tests for `HotColdMapper` and `PeerMessage`.  
 - **Focus:** Spatial computing APIs (UWB), real-time feedback, capability-aware UI.  
 - **Hardware Requirement:** Requires two UWB-capable iPhones (iPhone 11 or newer). QA blocked until a second UWB device is available.
 
