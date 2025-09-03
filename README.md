@@ -48,29 +48,30 @@ A collection of four small, surgical iOS apps built with **Xcode 26 (beta)**, **
 - **Focus:** Networking, background execution, notification delivery.
 
 ## Repo Structure
+
 ```
-ios26-microapps-portfolio/
-├─ PocketPantry/
-│  ├─ PocketPantry.xcodeproj
-│  ├─ PocketPantry/
-│  ├─ PocketPantryTests/
-│  └─ README.md
-├─ StepCounter/
-│  ├─ StepCounter.xcodeproj
-│  ├─ StepCounter/
-│  ├─ StepCounterTests/
-│  └─ README.md
-├─ HotColdFinder/
-│  ├─ HotColdFinder.xcodeproj
-│  ├─ HotColdFinder/
-│  ├─ HotColdFinderTests/
-│  └─ README.md
-├─ DailyQuoteFetcher/
-│  ├─ DailyQuoteFetcher.xcodeproj
-│  ├─ DailyQuoteFetcher/
-│  ├─ DailyQuoteFetcherTests/
-│  └─ README.md
-└─ README.md              # this file
+ios26-microapps-portfolio/  
+├─ PocketPantry/  
+│  ├─ PocketPantry.xcodeproj  
+│  ├─ PocketPantry/  
+│  ├─ PocketPantryTests/  
+│  └─ README.md  
+├─ StepCounter/  
+│  ├─ StepCounter.xcodeproj  
+│  ├─ StepCounter/  
+│  ├─ StepCounterTests/  
+│  └─ README.md  
+├─ HotColdFinder/  
+│  ├─ HotColdFinder.xcodeproj  
+│  ├─ HotColdFinder/  
+│  ├─ HotColdFinderTests/  
+│  └─ README.md  
+├─ DailyQuoteFetcher/  
+│  ├─ DailyQuoteFetcher.xcodeproj  
+│  ├─ DailyQuoteFetcher/  
+│  ├─ DailyQuoteFetcherTests/  
+│  └─ README.md  
+└─ README.md              # Portfolio-level README
 ```
 
 ## Getting Started
