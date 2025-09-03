@@ -97,8 +97,7 @@ ios26-microapps-portfolio/
 ## Tracking
 
 - Development tracked in Notion (boards by App and Status; Priority view; QA queue).  
-- Each app includes a `README.md` with features, migration/demo notes, and a demo script.  
-- Add short demo GIFs (20–30s) as apps are finished.
+- Each app includes a `README.md` with features, migration/demo notes, and a demo script.
 
 ## Status
 
